@@ -1,110 +1,53 @@
  
-var userInput = document.getElementById("userInput");
+var submitButton = document.getElementById("submit");
+var clearButton = document.getElementById("clear");
 var button = document.getElementById("button");
-var userOutput = document.getElementById("userOutput");
-var clearButton = document.getElementById("clearButton");
+var fahrenheit = document.getElementById("Fahrenheit");
+var celsius = document.getElementById("Celsius");
 
-
-function determineConverter () {
-  f.addEventListener("click",toFahrenheit);
-  c.addEventListener("click", toCelsius);
-  button.addEventListener("click", determineConverter);
+function toFahrenheit(temp) {
+    temp = (temp * 9/5) + 32;
+    temp = Math.round(temp);
+    return temp;
 }
 
-/*Stackover flow says: 
-<html>
-    <body>
-      <div id="output"></div>
-    </body>
-</html>
-
-and javascript
-
-window.onload = function(){
-  var output = document.getElementById('output');
-  console.log(output);
-  output.innerHTML = "test";
-  output.style.color ="#ff0000";
-};*/
-
-function toFahrenheit (userInput) {
- var input = userInput.value;
-var fTemp = (cTempVal * (9 / 5)) + 32;
- if (toCelsius > 32){
-    output.style.color = "red";
-    } else if (toCelsius <= 32) {
-      output.style.color = "green";
-      } else
-      output.style.color = "blue";
+function toCelsius(temp) {
+    temp = (temp - 32) * 5/9;
+    temp = Math.round(temp);
+    return temp;
 }
 
+function temp() {
+  var userInput = Math.round(document.getElementById("usertemp").value);
 
-function toCelsius (userInput) {
-  var input = userInput.value;
-  var cTemp = (fTempVal - 32) * (5 / 9);
-  if (toCelsius > 32){
-    output.style.color = "red";
-    } else if (toCelsius <= 0) {
-      output.style.color = "green";
-      } else
-      output.style.color = "blue";
-}
+  if (fahrenheit.checked) {
+     converted-temp.value = toFahrenheit(userInput);
+     userInput = parseInt(userInput);
+  }
 }
 
+  if (celsius.checked) {
+    converted-temp.value = toCelsius(userInput);
+    userInput = parseInt(userInput);
+  }
+ } 
+}
+
+document.getElementById("usertemp").addEventListener("keydown", function (e){
+    if (e.keyCode === 13) {
+        submitbutton.click();
+    }
+});
 
 function clear() {
-  document.getElementById("usertemp").value = "";
-  document.getElementById("converted-temp").innerHTML = "clear";
+    document.getElementById("usertemp").value = "";
+    document.getElementById("converted-temp").innerHTML = "clear";
 }
 
 
 submitbutton.addEventListener("click", temp);
 clearbutton.addEventListener("click", clear);
 
-
-
-
-
-/*
-
-    var fTemp = document.getElementById('fTemp');
-    var cTemp = document.getElementById('cTemp');
-
-function toCelsius () {
-                  
-    var cTemp = (fTempVal - 32) * (5 / 9);
-    document.getElementById('cTemp').value = cTempVal;
-    document.getElementById('cTemp').innerHTML += cTempVal;
-  console.log(myCheck);     
-  //f to c
-
-}
-
-
-function toFahrenheit () {
-     
-    var fTemp = (cTempVal * (9 / 5)) + 32;
-    //console.log(fTempVal);
-    document.getElementById('fTemp').value = fTempVal;
-    document.getElementById('fTemmp').innerHTML += fTempVal;
- }
- //c to f
-
-
-// Get a reference to the button element in the DOM
-var button = document.getElementById("converter");
-
-// This function should determine which conversion should
-// happen based on which radio button is selected.
-
-
-  
-//}
-
-// Assign a function to be executed when the button is clicked
-button.addEventListener("click", determineConverter); 
-
-*/
 
 
 
